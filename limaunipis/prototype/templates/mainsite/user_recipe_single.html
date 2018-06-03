@@ -1,0 +1,114 @@
+{% extends 'mainsite/base.html' %}
+{% load staticfiles %}
+
+{% block body_block %}
+
+{% comment %}<!-- <div class="row contentgroup">
+    <div class="col-md-5">
+        <img src="{{ user_recipe.picture_1.url }}" class="img-rounded" style="width:100%">  
+        <div class="panel panel-default hidden-sm hidden-xs" style="margin-top : 10px;">
+            <div class="panel-heading">Latest {{ user_recipe.user }} Posted Recipe</div>
+            <div class="panel-body">
+                {% for recipe in latest_recipe %}
+                    <a href="{% url 'limau:user_recipe_single' slug=recipe.slug %}">{{ recipe.name_bm }}</a></br>
+                {% endfor %}    
+            </div>
+        </div> 
+    </div>
+    <div class="col-md-7">
+        <h3> {{ user_recipe.name_bm }} </h3>
+        <h4> by {{ user_recipe.user }}</h4>
+        {% if request.user == user_recipe.user %}
+        <a class="btn btn-default" href="{% url 'limau:user_recipe_edit' pk=user_recipe.pk %}" ><span class="glyphicon glyphicon-pencil"> EDIT </span></a>
+        {% endif %}</br>
+        <span class="article_text">{{ user_recipe.content | safe }}</span>
+        <div class="panel panel-default hidden-md hidden-lg" style="margin-top : 10px;">
+            <div class="panel-heading">Latest {{ user_recipe.user }} Posted Recipe</div>
+            <div class="panel-body">
+                {% for recipe in latest_recipe %}
+                    <a href="{% url 'limau:user_recipe_single' slug=recipe.slug %}">{{ recipe.name_bm }}</a></br>
+                {% endfor %}    
+            </div>
+        </div>
+        
+        
+    </div>
+</div></br> -->{% endcomment %}
+
+<div class="row hidden-sm hidden-xs">
+    <div class="col-md-12 col-lg-12">
+        <img src="{{ user_recipe.picture_1.url }}" class="img img-responsive img-rounded" style="width:95%;">
+    </div>
+    <div class="col-md-12 col-lg-12">
+        <h2 id="article-single-header">{{ user_recipe.name_bm }}</h2>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="col-md-1">
+                <img src="{{ user_recipe.user.userprofile.picture.url}}" class="img img-responsive img-circle">
+            </div>
+            <div class="col-md-4 user-info">
+                <p style="margin-bottom:0;"> Posted by : <a href="{% url 'limau:user_profile' username=user_recipe.user.username %}">{{ user_recipe.user.username }}</a></p>
+                <p> Post date : {{ user_recipe.created_date }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-2 col-lg-2">
+        <div class="recipe_ingredient">
+            <h4>Ingredients</h4>
+            <hr class="style-two" style="margin-top:0; margin-bottom:5px;">
+            {{ user_recipe.ingredients | safe }}
+        </div>
+    </div>
+    <div class="col-md-9 col-lg-9">
+        <div class="recipe_instruction">
+            <h4>Instructions {% if request.user == user_recipe.user %}
+                <a href="{% url 'limau:user_recipe_edit' pk=user_recipe.pk %}"> - edit your recipe</a>
+                {% endif %}</h4>
+            <hr class="style-two" style="margin-top:0; margin-bottom:5px;">
+            <ol>{{ user_recipe.instructions | safe }}</ol>
+        </div>
+    </div>
+    <div class="col-sm-12 col-xs-12">
+        <hr class="style-two">
+    </div>
+</div>
+
+<div class="row hidden-md hidden-lg">
+    <div class="col-sm-12 col-xs-12">
+        <img src="{{ user_recipe.picture_1.url }}" class="img img-responsive img-rounded" style="width:100%;">
+    </div>
+    <div class="col-sm-12 col-xs-12">
+        <h2 id="article-single-header">{{ user_recipe.name_bm }}</h2>
+    </div>
+    <div class="col-sm-12 col-xs-12" style="margin-bottom:5px;">
+        <div class="col-sm-3 col-xs-3">
+            <img src="{{ user_recipe.user.userprofile.picture.url}}" class="img img-responsive img-circle">
+        </div>
+        <div class="col-sm-9 col-xs-9 user-info">
+            <p style="margin-bottom:0;"> Posted by : <a href="{% url 'limau:user_profile' username=user_recipe.user.username %}">{{ user_recipe.user.username }}</a></p>
+            <p> Post date : {{ user_recipe.created_date }}</p>
+        </div>
+    </div>
+    <div class="col-sm-4 col-xs-4">
+        <div class="recipe_ingredient">
+            <h4>Ingredients</h4>
+            <hr class="style-two" style="margin-top:0; margin-bottom:5px;">
+            {{ user_recipe.ingredients | safe }}
+        </div>
+    </div>
+    <div class="col-sm-8 col-xs-8">
+        <div class="recipe_instruction">
+            <h4>Instructions{% if request.user == user_recipe.user %}
+                <a href="{% url 'limau:user_recipe_edit' pk=user_recipe.pk %}"> - edit</a>
+                {% endif %}</h4>
+            <hr class="style-two" style="margin-top:0; margin-bottom:5px;">
+            <ol>{{ user_recipe.instructions | safe }}</ol>
+        </div>
+    </div>
+    <div class="col-sm-12 col-xs-12">
+        <hr class="style-two">
+    </div>
+</div>
+
+{% endblock %}

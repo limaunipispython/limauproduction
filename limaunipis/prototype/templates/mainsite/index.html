@@ -1,0 +1,42 @@
+{% extends 'mainsite/base.html' %}
+{% load staticfiles %}
+{% load class_tag %}
+
+{% block body_block %}
+
+<div class="row">
+    <div class="hidden-lg hidden-md col-sm-12 col-xs-12">
+        <div class="jumbotron">
+            <div class="col-sm-4 col-xs-6">
+                <a href="#">
+                    <img src="{{ bannerurl }}" class="img img-responsive img-circle limau_mobile">
+                </a>
+            </div>
+            <div class="col-sm-4 col-sm-offset-4 col-xs-6">
+                <div class="row">
+                    <p id="social_media_text_mobile">SOCIAL MEDIA</p>
+                    <hr class="style-two" style="margin-top: 5px;">
+                    <div class="col-sm-6 col-xs-6">
+                            <a href="{{ banner.2.image_url }}"><img src="{{ banner.2.image.url }}" class="img img-responsive"></a>
+                    </div>
+                    <div class="col-sm-6 col-xs-6">
+                            <a href="{{ banner.1.image_url }}"><img src="{{ banner.1.image.url }}" class="img img-responsive"></br></a>
+                    </div>
+                </div>
+                <!-- <p id="social_media_text_mobile">SOCIAL MEDIA</p> -->
+            </div>    
+        </div>
+    </div>
+</div>
+{% include page_template %}
+
+{% block js %}
+    {{ block.super }}
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="/static/el-pagination/js/el-pagination.js"></script>
+    <script>$.endlessPaginate({paginateOnScroll: true});</script>
+{% endblock %}
+
+
+{% endblock %}
+

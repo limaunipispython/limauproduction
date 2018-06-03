@@ -1,0 +1,7 @@
+*.pyc
+*~
+__pycache__
+myvenv
+.vscode
+db.sqlite3
+limaunipis/prototype/media

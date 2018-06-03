@@ -1,0 +1,71 @@
+{% load class_tag %}
+
+{% load el_pagination_tags %}
+{% paginate content_list %}
+
+{% for item in content_list %}
+    {% if item|get_class == 'Recipe' %}
+    <div class="row contentgroup">
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="youtube">
+                <iframe width="854" height="480" src="{{ item.youtube_url }}" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="content_text">
+                <h4><a href="{% url 'limau:recipe_single' slug=item.slug %}">{{ item.name_bm }}</a></h4>
+                <p>Post date : {{ item.created_date }}</p>
+                <content>{{ item.description | truncatechars:200 | safe }}</content></br>
+                <a href="{% url 'limau:recipe_single' slug=item.slug %}" class="btn btn-success" role="button">Read More</a>
+            </div>
+        </div>
+    </div><hr class="style-two">
+    {% elif item|get_class == 'Article' %}
+    <div class="row contentgroup">
+        <div class="col-md-6 col-sm-12 col-xs-12">
+            <div class="article_picture">
+                <img class="img img-rounded" src="{{ item.thumbnail.url }}" style="width:100%">
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-12 col-xs-12">
+            <div class="content_text">
+                <h4><a href="{% url 'limau:article_single' slug=item.slug %}">{{ item.title_bm }}</a></h4>
+                <p>Post date : {{ item.created_date }}</p>
+                <content>{{ item.text_bm | truncatechars:200 | safe }}</content></br>
+                <a href="{% url 'limau:article_single' slug=item.slug %}" class="btn btn-success" role="button">Read More</a>
+            </div>
+        </div>
+    </div><hr class="style-two">
+    {% elif item|get_class == 'Restaurant' %}
+    <div class="row contentgroup">
+        <div class="col-md-12 col-sm-12 col-xs-12 restaurant_title">
+            <h4><a href="{% url 'limau:restaurant_single' slug=item.slug %}">Limau Review : {{ item.name_bm }} </a></h4>
+            <p>Post date : {{ item.created_date }}</p>
+        </div>
+        <div class="col-md-4 col-sm-4 col-xs-6">
+            <div class="restaurant_pic">
+                <img class="img img-rounded" src="{{ item.building_thumbnail.url }}" style="width:100%">
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-4 col-xs-6">
+            <div class="restaurant_pic">
+                <img class="img img-rounded" src="{{ item.food_thumbnail_1.url }}" style="width:100%">
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-4 col-xs-12">
+            <div class="criteria">
+                <span class="limau_meter">Limau <i class="fa fa-tachometer" aria-hidden="true"></i> : </span>
+                <span class="stars">{{ item.starhtml | safe }}</span>
+            </div>
+            <div class="restaurant_text">
+                <content>{{ item.description | truncatechars:100 | safe }}</content></br>
+                <location class="address"> ADDRESS: {{ item.address }}</location></br>
+                <a href="{% url 'limau:restaurant_single' slug=item.slug %}" class="btn btn-success" role="button">Read More</a>
+            </div>
+        </div>
+    </div><hr class="style-two">
+
+    {% endif %}
+{% endfor %}
+
+{% show_more %}

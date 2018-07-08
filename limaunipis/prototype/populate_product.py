@@ -9,7 +9,7 @@ from datetime import timedelta
 
 def populate():
     for i in range(0, 25):
-        item = Product.objects.get(pk=28)
+        item = Product.objects.get(pk=1)
         item.pk = None
         item.name = item.name + str(i)
         item.save()

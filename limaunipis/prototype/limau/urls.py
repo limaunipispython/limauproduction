@@ -52,6 +52,8 @@ urlpatterns = [
     url(r'^shop_index/$', views.shop_index, name="shop_index"),
     url(r'^category/(?P<slug>[\w\-]+)/$', views.shop_category, name="shop_category"),
     url(r'^product/(?P<pk>\d+)/(?P<slug>[\w\-]+)/$', views.product_single, name="product_single"),
+    url(r'^search/$', views.search, name="search"),
+    url(r'^search_shop/$', views.search_shop, name="search_shop"),
 ]
 
 

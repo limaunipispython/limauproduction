@@ -1,32 +1,14 @@
-Major Task : Complete comment using django contrib comments
+===POSTGRESQL SETTINGS===
 
-Recap on what have i done now
+Installation Directory: C:\Program Files\PostgreSQL\10
+Server Installation Directory: C:\Program Files\PostgreSQL\10
+Data Directory: C:\Program Files\PostgreSQL\10\data
+Database Port: 5432
+Database Superuser: postgres
+Operating System Account: NT AUTHORITY\NetworkService
+Database Service: postgresql-x64-10
+Command Line Tools Installation Directory: C:\Program Files\PostgreSQL\10
+pgAdmin4 Installation Directory: C:\Program Files\PostgreSQL\10\pgAdmin 4
+Stack Builder Installation Directory: C:\Program Files\PostgreSQL\10
 
-1. in settings.py 
-    - include site_id=1 
-    - include django.contrib.sites and django_comments into installed_app list
 
-2. in urls.py 
-    - include in urlpatterns list :  url(r'^comments/', include('django_comments.urls')), 
-
-3. in article_single.html
-    - {% load comments %} - template tag?
-    - get_comment_count
-    - to render all comments for particular instance(article) there are two methods 
-        1. fast : render_comment_list -> html can be customized in some files in package directory
-        2. slower but with option to customize html in particular template: 
-            - get_comment_list for article as comments ->creating dictionary of comments 
-    - to render the form
-        1. fast : render_comment_form  
-        2. slower but with option to customize html in particular template:
-            - get_comment_form as comment form ->can use bootstrap
-            
-
-What to do next
-1. build up comment form for authenticated users only - done
-
-2. set up server
-
-3. include recipe author in the user recipe list
-
-4. try to integrate haystack with whoosh

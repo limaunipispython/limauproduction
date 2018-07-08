@@ -1,0 +1,14 @@
+{% extends 'mainsite/base_shop.html' %}
+{% load staticfiles %}
+
+{% block body_block %}
+
+<h2>PRODUCTS</h2>
+<ul>
+    {% for product in products %}
+        <li>{{ product.name }}</li>
+    {% endfor %}
+</ul>
+
+
+{% endblock %}

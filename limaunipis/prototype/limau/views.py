@@ -512,6 +512,41 @@ def product_single(request, slug, pk):
     }
     return HttpResponse(template.render(context, request))
 
+# --------------------------------SEARCH-----------------------------------------
+
+def search(request):
+    template = loader.get_template('mainsite/search.html')
+    
+    if request.method == 'POST':
+        search_text = request.POST.get('search')
+        recipes = Recipe.objects.filter(name_bm__search=search_text)
+        articles = Article.objects.filter(title_bm__search=search_text)
+        restaurants = Restaurant.objects.filter(name_bm__search=search_text)
+        context = {
+            'search_text' : search_text,
+            'recipes' : recipes,
+            'articles' : articles,
+            'restaurants' : restaurants,
+        }
+        return HttpResponse(template.render(context, request))
+    else:
+        return HttpResponseRedirect(reverse('limau:index'))
+
+
+def search_shop(request):
+    template = loader.get_template('mainsite/search_shop.html')
+    
+    if request.method == 'POST':
+        search_text = request.POST.get('search')
+        products = Product.objects.filter(name__search=search_text)
+        context = {
+            'search_text' : search_text,
+            'products' : products,
+        }
+        return HttpResponse(template.render(context, request))
+    else:
+        return HttpResponseRedirect(reverse('limau:shop_index'))
+
 
 # --------------------------------MISCELLANEOUS----------------------------------
 
@@ -525,4 +560,3 @@ def emailtest(request):
     email = EmailMessage('Limau Nipis Password Recovery', 'Your password is this and this', to=['muzakkirm1988@gmail.com'])
     email.send()
     return HttpResponse("sending email")
-   

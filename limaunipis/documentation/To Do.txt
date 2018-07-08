@@ -46,4 +46,9 @@ we might want to use disqus
 3) once the function is all ok try to modify the template
 4) once template looks ok then retry the threaded comments solution/package
 
+To Do 28/6/2018
+1. set up postgresql in windows version
+2. try to build search functionality ground up
+    - setup search box
+    - build back end for the search using the postgres text search
 

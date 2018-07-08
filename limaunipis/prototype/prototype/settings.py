@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     # 'django.contrib.sites',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'haystack',
     'django.contrib.staticfiles',
     'limau',
     'imagekit', 
@@ -48,6 +47,7 @@ INSTALLED_APPS = [
     'bootstrap3',
     'django.contrib.sites',
     'django_comments',
+    'django.contrib.postgres',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -87,8 +87,12 @@ WSGI_APPLICATION = 'prototype.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'test_db',
+        'USER': 'postgres',
+        'PASSWORD': 'wwg@5812',
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
 

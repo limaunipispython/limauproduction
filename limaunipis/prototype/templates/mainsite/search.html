@@ -1,0 +1,31 @@
+{% extends 'mainsite/base.html' %}
+{% load staticfiles %}
+
+{% block body_block %}
+<p>search results for {{ search_text }}....</p>
+
+<h3>RECIPES</h3>
+<ul>
+{% for recipe in recipes %}
+    <li>{{ recipe.name_bm }} {{ recipe.name_en }}</li>
+{% endfor %}
+</ul>
+
+
+<h3>ARTICLES</h3>
+<ul>
+{% for article in articles %}
+    <li>{{ article.title_bm }}</li>
+{% endfor %}
+</ul>
+
+<h3>RESTAURANTS</h3>
+<ul>
+{% for restaurant in restaurants %}
+    <li>{{ restaurant.name_bm }}</li>
+{% endfor %}
+</ul>
+
+{% endblock %}
+
+

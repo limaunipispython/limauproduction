@@ -2,29 +2,68 @@
 {% load staticfiles %}
 
 {% block body_block %}
-<p>search results for {{ search_text }}....</p>
+<p>Search results for {{ search_text }}....</p>
 
-<h3>RECIPES</h3>
-<ul>
-{% for recipe in recipes %}
-    <li>{{ recipe.name_bm }} {{ recipe.name_en }}</li>
-{% endfor %}
-</ul>
+<div class="row">
+    <div class="col-md-8 col-sm-8 col-xs-12">
+    {% if recipes %}
+        <div class="list-group">
+            <a href="" class="list-group-item active">LIMAU NIPIS RECIPES</a>
+        {% for recipe in recipes|slice:":5" %}
+            <a href="{% url 'limau:recipe_single' slug=recipe.slug %}" class="list-group-item">{{ recipe.name_bm }}</a>
+        {% endfor %}
+        </div>
+    {% else %}
+        <div class="list-group">
+            <a href="#" class="list-group-item active">LIMAU NIPIS RECIPES</a>
+            <a href="#" class="list-group-item">No results..</a>
+        </div>
+    {% endif %}
 
+    {% if articles %}
+        <div class="list-group">
+            <a href="" class="list-group-item active">ARTICLES</a>
+        {% for article in articles|slice:":5" %}
+            <a href="{% url 'limau:article_single' slug=article.slug %}" class="list-group-item">{{ article.title_bm }}</a>
+        {% endfor %}
+        </div>
+    {% else %}
+        <div class="list-group">
+            <a href="#" class="list-group-item active">ARTICLES</a>
+            <a href="#" class="list-group-item">No results..</a>
+        </div>
+    {% endif %}
 
-<h3>ARTICLES</h3>
-<ul>
-{% for article in articles %}
-    <li>{{ article.title_bm }}</li>
-{% endfor %}
-</ul>
+    {% if restaurants %}
+        <div class="list-group">
+            <a href="" class="list-group-item active">RESTAURANTS</a>
+        {% for restaurant in restaurants|slice:":5" %}
+            <a href="{% url 'limau:restaurant_single' slug=restaurant.slug %}" class="list-group-item">{{ restaurant.name_bm }}</a>
+        {% endfor %}
+        </div>
+    {% else %}
+        <div class="list-group">
+            <a href="#" class="list-group-item active">RESTAURANTS</a>
+            <a href="#" class="list-group-item">No results..</a>
+        </div>
+    {% endif %}
 
-<h3>RESTAURANTS</h3>
-<ul>
-{% for restaurant in restaurants %}
-    <li>{{ restaurant.name_bm }}</li>
-{% endfor %}
-</ul>
+    {% if user_recipes %}
+        <div class="list-group">
+            <a href="" class="list-group-item active">USER POSTED RECIPES</a>
+        {% for recipe in user_recipes|slice:":5" %}
+            <a href="{% url 'limau:user_recipe_single' slug=recipe.slug %}" class="list-group-item">{{ recipe.name_bm }}</a>
+        {% endfor %}
+        </div>
+    {% else %}
+        <div class="list-group">
+            <a href="#" class="list-group-item active">USER POSTED RECIPES</a>
+            <a href="#" class="list-group-item">No results..</a>
+        </div>
+    {% endif %}
+
+    </div>
+</div>
 
 {% endblock %}
 

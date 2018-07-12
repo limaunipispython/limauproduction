@@ -522,11 +522,13 @@ def search(request):
         recipes = Recipe.objects.filter(name_bm__search=search_text)
         articles = Article.objects.filter(title_bm__search=search_text)
         restaurants = Restaurant.objects.filter(name_bm__search=search_text)
+        user_recipes = UserRecipe.objects.filter(name_bm__search=search_text)
         context = {
             'search_text' : search_text,
             'recipes' : recipes,
             'articles' : articles,
             'restaurants' : restaurants,
+            'user_recipes' : user_recipes,
         }
         return HttpResponse(template.render(context, request))
     else:

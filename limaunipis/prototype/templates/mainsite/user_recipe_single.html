@@ -57,7 +57,7 @@
         <div class="recipe_ingredient">
             <h4>Ingredients</h4>
             <hr class="style-two" style="margin-top:0; margin-bottom:5px;">
-            {{ user_recipe.ingredients | safe }}
+            {{ user_recipe.ingredients | linebreaks | safe}}
         </div>
     </div>
     <div class="col-md-9 col-lg-9">
@@ -66,7 +66,7 @@
                 <a href="{% url 'limau:user_recipe_edit' pk=user_recipe.pk %}"> - edit your recipe</a>
                 {% endif %}</h4>
             <hr class="style-two" style="margin-top:0; margin-bottom:5px;">
-            <ol>{{ user_recipe.instructions | safe }}</ol>
+            <ol>{{ user_recipe.instructions | linebreaks | safe }}</ol>
         </div>
     </div>
     <div class="col-sm-12 col-xs-12">
@@ -94,7 +94,7 @@
         <div class="recipe_ingredient">
             <h4>Ingredients</h4>
             <hr class="style-two" style="margin-top:0; margin-bottom:5px;">
-            {{ user_recipe.ingredients | safe }}
+            {{ user_recipe.ingredients | linebreaks | safe }}
         </div>
     </div>
     <div class="col-sm-8 col-xs-8">
@@ -103,7 +103,7 @@
                 <a href="{% url 'limau:user_recipe_edit' pk=user_recipe.pk %}"> - edit</a>
                 {% endif %}</h4>
             <hr class="style-two" style="margin-top:0; margin-bottom:5px;">
-            <ol>{{ user_recipe.instructions | safe }}</ol>
+            <ol>{{ user_recipe.instructions | linebreaks | safe }}</ol>
         </div>
     </div>
     <div class="col-sm-12 col-xs-12">

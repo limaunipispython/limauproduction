@@ -41,14 +41,14 @@
         <div class="recipe_ingredient">
             <h4>Ingredients</h4>
             <hr class="style-two" style="margin-top:0; margin-bottom:5px;">
-            {{ recipe.ingredient_content | safe }}
+            {{ recipe.ingredient_content | safe | linebreaks }}
         </div>
     </div>
     <div class="col-sm-8 col-xs-8">
         <div class="recipe_instruction">
             <h4>Instructions</h4>
             <hr class="style-two" style="margin-top:0; margin-bottom:5px;">
-            <ol>{{ recipe.instruction | safe }}</ol>
+            <ol>{{ recipe.instruction | safe | linebreaks }}</ol>
         </div>
     </div>
     <div class="col-sm-12 col-xs-12">
@@ -84,14 +84,14 @@
         <div class="recipe_ingredient">
             <h4>Ingredients</h4>
             <hr class="style-two" style="margin-top:0; margin-bottom:5px;">
-            {{ recipe.ingredient_content | safe }}
+            {{ recipe.ingredient_content | safe | linebreaks }}
         </div>
     </div>
     <div class="col-md-9 col-lg-9">
         <div class="recipe_instruction">
             <h4>Instructions</h4>
             <hr class="style-two" style="margin-top:0; margin-bottom:5px;">
-            <ol>{{ recipe.instruction | safe }}</ol>
+            <ol>{{ recipe.instruction | safe | linebreaks }}</ol>
         </div>
     </div>
     <div class="col-sm-12 col-xs-12">

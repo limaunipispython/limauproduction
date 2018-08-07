@@ -1,5 +1,6 @@
 {% extends 'mainsite/base.html' %}
 {% load staticfiles %}
+{% load bootstrap3 %}
 
 {% block body_block %}
 
@@ -109,6 +110,33 @@
     <div class="col-sm-12 col-xs-12">
         <hr class="style-two">
     </div>
+</div>
+
+<div class="col-md-12 col-sm-12" style="margin-bottom:50px;">
+    {% load comments %}
+    {% get_comment_count for user_recipe as comment_count %}
+    <p>{{ comment_count }} comments</p>
+    {% render_comment_list for user_recipe %}
+
+    {% if user.is_authenticated %}
+        {% get_comment_form for user_recipe as commentform %}
+        <form action="{% comment_form_target %}" method="post">
+            {% csrf_token %}
+            {% bootstrap_field commentform.comment %}
+            {{ commentform.honeypot }}
+            {{ commentform.content_type }}
+            {{ commentform.object_pk }}
+            {{ commentform.timestamp }}
+            {{ commentform.security_hash }}
+            <input type="hidden" name="next" value="{% url 'limau:user_recipe_single' slug=user_recipe.slug %}">
+            <button type="submit" name="submit" value="Post" id="id_submit" class="save btn btn-default">Submit</button> 
+            <button type="preview" name="preview" value="Preview" class="save btn btn-default">Preview</button>   
+        </form>
+
+    {% else %}
+        <a href="{% url 'auth_login' %}" class="comment_login">Please login to comment</a>
+    {% endif %}
+
 </div>
 
 {% endblock %}

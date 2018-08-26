@@ -1,3 +1,4 @@
+
 """
 Django settings for prototype project.
 
@@ -24,9 +25,9 @@ TEMPLATE_PATH = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = 'l7!@4t=(^t4r7+s4^1_xacgap1ruys05maajfiqir$nnzwev(j'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1', '.pythonanywhere.com', 'localhost']
+ALLOWED_HOSTS = ['103.233.2.95', '.limaunipis.com']
 
 
 # Application definition
@@ -87,9 +88,9 @@ WSGI_APPLICATION = 'prototype.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'test_db',
-        'USER': 'postgres',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'limaunipisprimary',
+        'USER': 'muzakkir',
         'PASSWORD': 'wwg@5812',
         'HOST': 'localhost',
         'PORT': '',
@@ -135,7 +136,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATIC_PATH = os.path.join(BASE_DIR, 'static')
+STATIC_PATH = os.path.join(BASE_DIR, 'static/')
+STATIC_ROOT_PATH = os.path.join(BASE_DIR, 'asset/')
+
+STATIC_ROOT = STATIC_ROOT_PATH
 
 STATICFILES_DIRS = [STATIC_PATH,]
 
@@ -167,11 +171,4 @@ EMAIL_PORT = 587
 # comment setting
 SITE_ID = 1
 
-## haystack whoosh setting
 
-HAYSTACK_CONNECTIONS = {
-    'default': {
-        'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
-        'PATH': os.path.join(BASE_DIR, 'whoosh_index'),
-    },
-}

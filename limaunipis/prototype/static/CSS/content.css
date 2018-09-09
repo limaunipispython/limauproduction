@@ -384,6 +384,7 @@ body {
 
 .recipe_ingredient p {
 	font-size: small;
+	color: darkgrey;
 }
 
 #ingredient_header {

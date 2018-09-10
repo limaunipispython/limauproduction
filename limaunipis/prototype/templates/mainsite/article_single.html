@@ -100,6 +100,7 @@
     {% load comments %}
     {% get_comment_count for article as comment_count %}
     <p>{{ comment_count }} comments</p>
+    
     {% render_comment_list for article %}
 
     {% if user.is_authenticated %}

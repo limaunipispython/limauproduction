@@ -46,8 +46,9 @@ INSTALLED_APPS = [
     'registration',
     'bootstrap_toolkit',
     'bootstrap3',
-    'django.contrib.sites',
+    'threadedcomments',
     'django_comments',
+    'django.contrib.sites', 
     'django.contrib.postgres',
 ]
 
@@ -169,6 +170,8 @@ EMAIL_HOST_PASSWORD = 'wwg@5812'
 EMAIL_PORT = 587
 
 # comment setting
+COMMENTS_APP = 'threadedcomments'
+
 SITE_ID = 1
 
 

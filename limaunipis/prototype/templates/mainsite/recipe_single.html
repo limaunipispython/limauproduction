@@ -1,5 +1,6 @@
 {% extends 'mainsite/base.html' %}
 {% load staticfiles %}
+{% load threadedcomments_tags %}
 
 {% block body_block %}
 <div class="row contentgroup">
@@ -16,7 +17,7 @@
         <h4> Bahan Bahan </h4>
         <div class="list-group">
             {% for ingredient in recipe.ingredients.all %}
-            <a href="#" class="list-group-item">{{ ingredient.name_bm }}</a>
+        <a href="#" class="list-group-item">{{ ingredient.name_bm }}</a>
             {% endfor %}        
         </div>
     </div>
@@ -99,5 +100,14 @@
     </div>
 </div>
 
+<div class="col-md-12 col-sm-12 col-xs-12" style="margin-bottom:50px;">
+    <div class="comments_wrapper" id="comments">
+        {% render_comment_list for recipe %}
+
+        <div id="wrap_write_comment">
+            {% render_comment_form for recipe %}
+        </div>
+    </div>
+</div>
 
 {% endblock %}

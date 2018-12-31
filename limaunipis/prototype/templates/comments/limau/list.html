@@ -1,6 +1,8 @@
 {% load threadedcomments_tags %}
 
-<div class="comments_length">
+<!-- this is the original code from threadedcomments  template -->
+
+<!-- <div class="comments_length">
     <p>{{ comment_list|length }} Comments</p>
 </div>
 
@@ -27,4 +29,64 @@
             {% for close in comment.close %}</li></ul>{% endfor %}
 
     {% endfor %}
+</div> -->
+
+
+<div class="comments_length">
+    <p>{{ comment_list|length }} Comments</p>
 </div>
+
+<div class="comments" >
+    {% for comment in comment_list|fill_tree|annotate_tree %}
+        {% if comment.open %}
+            <ul {% if comment.parent == None %} style="padding-left: 0;" {% endif %}>
+        {% else %}
+            </li>
+        {% endif %}
+        <li class="comment_li" id="c{{ comment.id }}">{# c## is used by the absolute URL of the Comment model, so keep that as it is. #}
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="comment">
+                        <div class="comment_info">
+                            <div class="comment_user">{{ comment.user_name }}</div>
+                            <div class="comment_data">
+                                {{ comment.submit_date|date:"d M Y, H:i" }}
+                                {% if comment.parent == None %} | <a href="#c{{ comment.id }}" data-comment-id="{{ comment.id }}" class="comment_reply_link">Reply</a> {% endif %}
+                            </div>
+                        </div>
+                        <div class="comment_text">
+                            {{ comment.comment }}
+                        </div>
+                    </div>
+                </div>    
+            </div>   
+            {% for close in comment.close %}</li></ul>{% endfor %}
+
+    {% endfor %}
+</div>
+
+
+
+<!-- testing threaded comments tag -->
+{% comment %}
+{% for comment in comment_list|fill_tree|annotate_tree%}
+    {% if comment.open %}
+        <div class="testing_comments" style="border: solid black">
+            <p>{{ comment.user_name  }} | {{ comment.submit_date|date:"d M Y, H:i" }}</p>
+            <p>{{ comment.comment }}</p>
+            <p> OPEN </p> 
+            <p>{{ comment.open }}</p>
+            <p>{{ comment.close }}</p>
+            <p>{{ comment.parent }}</p>
+        </div>
+    {% else %}
+        <div class="testing_comments" style="border: solid black">
+            <p>{{ comment.user_name  }} | {{ comment.submit_date|date:"d M Y, H:i" }}</p>
+            <p>{{ comment.comment }}</p>
+            <p>  CLOSE </p>
+            <p>{{ comment.open }}</p>
+            <p>{{ comment.close }}</p>
+        </div>
+    {% endif %}
+{% endfor %}
+{% endcomment %}

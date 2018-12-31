@@ -1,6 +1,8 @@
 {% extends 'mainsite/base.html' %}
 {% load staticfiles %}
+{% load threadedcomments_tags %}
 {% load bootstrap3 %}
+{% load comments %}
 
 {% block body_block %}
 
@@ -97,12 +99,13 @@
     {% endfor %}
 </div>
 <div class="col-md-12 col-sm-12" style="margin-bottom:50px;">
-    {% load comments %}
+   {% comment %} 
+   {% load comments %} 
     {% get_comment_count for article as comment_count %}
     <p>{{ comment_count }} comments</p>
-    
+    {% endcomment %}
     {% render_comment_list for article %}
-
+    
     {% if user.is_authenticated %}
         {% get_comment_form for article as commentform %}
         <form action="{% comment_form_target %}" method="post">

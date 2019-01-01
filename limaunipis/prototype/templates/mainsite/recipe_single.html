@@ -107,35 +107,41 @@
     <div class="comments_wrapper" id="comments">
         {% render_comment_list for recipe %}
 
+
+
         {% comment %}
         <div id="wrap_write_comment">
             {% render_comment_form for recipe %}
         </div> 
-        {% endcomment %}
+
+        {% endcomment%}
                  
-                 <div id="wrap_write_comment">
-                     <div id="form-comment"> 
-                        {% if user.is_authenticated %}
-                            {% get_comment_form for recipe as commentform %}
-                            <form action="{% comment_form_target %}" method="post">
-                                {% csrf_token %}
-                                {% bootstrap_field commentform.comment %}
-                                {{ commentform.honeypot }}
-                                {{ commentform.content_type }}
-                                {{ commentform.object_pk }}
-                                {{ commentform.timestamp }}
-                                {{ commentform.security_hash }}
-                                <input type="hidden" name="next" value="{% url 'limau:recipe_single' slug=recipe.slug %}">
-                                <button type="submit" name="submit" value="Post" id="id_submit" class="save btn btn-default">Submit</button> 
-                                <button type="preview" name="preview" value="Preview" class="save btn btn-default">Preview</button>   
-                            </form>
-                        
-                        {% else %}
-                            <a href="{% url 'auth_login' %}" class="comment_login">Please login to comment</a>
-                        {% endif %}
-                     </div>
-                 </div>
-           
+        <div id="wrap_write_comment">
+            <div id="form-comment"> 
+            {% if user.is_authenticated %}
+                {% get_comment_form for recipe as commentform %}
+                <form action="{% comment_form_target %}" method="post">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        {% bootstrap_field commentform.comment %}
+                        {{ commentform.honeypot }}
+                        {{ commentform.content_type }}
+                        {{ commentform.object_pk }}
+                        {{ commentform.timestamp }}
+                        {{ commentform.security_hash }}
+                        {{ commentform.parent}}
+                        <input type="hidden" name="next" value="{% url 'limau:recipe_single' slug=recipe.slug %}">
+                        <button type="submit" name="submit" value="Post" id="id_submit" class="save btn btn-default">Submit</button> 
+                        <button type="preview" name="preview" value="Preview" class="save btn btn-default">Preview</button>
+                    </div>   
+                </form>
+            
+            {% else %}
+                <a href="{% url 'auth_login' %}" class="comment_login">Please login to comment</a>
+            {% endif %}
+            </div>
+        </div>
+
 
         <!-- testing custom made comment form -->          
     </div>

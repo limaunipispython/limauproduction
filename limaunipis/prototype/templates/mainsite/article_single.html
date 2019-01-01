@@ -105,6 +105,10 @@
     <p>{{ comment_count }} comments</p>
     {% endcomment %}
     {% render_comment_list for article %}
+
+    <div id="wrap_write_comment">
+        {% render_comment_form for article %}
+    </div> 
     
     {% if user.is_authenticated %}
         {% get_comment_form for article as commentform %}

@@ -575,7 +575,7 @@ body {
 	padding-left: 15px;
 	font-weight: bold;
 }
-
+/* 
 #form-comment {
 	padding: 15px;
 	margin: 15px;
@@ -586,7 +586,7 @@ body {
 form label {
 	float: left;
 	width: 130px;
-}
+} */
 
 label[for=id_honeypot],
 #id_honeypot {

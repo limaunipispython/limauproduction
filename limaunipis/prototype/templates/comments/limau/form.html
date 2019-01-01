@@ -1,12 +1,14 @@
 <div id="form-comment">
     <form action="/comments/post/" method="post">{% csrf_token %}
+        {% if user.is_authenticated %}
         {{ form.as_p }}{# just to keep the example simple. Consider using django-crispy-forms in real life #}
 
         <p>
-            <input type="hidden" name="next" value="{% url 'limau:recipe_single' slug=recipe.slug %}">
             <input type="submit" value="Submit Comment"/>
             <a href="#c0" id="cancel_reply">cancel reply</a>
         </p>
+        {% else %}
+        <a href="{% url 'auth_login' %}" class="comment_login">Please login to comment</a>
+        {% endif %}
     </form>
 </div>
-

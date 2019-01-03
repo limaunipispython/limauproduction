@@ -138,6 +138,36 @@
             
             {% else %}
                 <a href="{% url 'auth_login' %}" class="comment_login">Please login to comment</a>
+                {% get_comment_form for recipe as commentform %}
+
+                <form action="{% comment_form_target %}" method ="post">
+                    {% csrf_token %}
+
+                    {{ commentform.non_field_errors  }}
+
+                    {% for hidden_field in commentform.hidden_fields %}
+                        {{  hidden_field.errors }}
+                        {{ hidden_field }}
+                    {% endfor %}
+
+                    <table border="1">
+                        {% for field in commentform.visible_fields %}
+                            <tr>
+                                <th>{{ field.label_tag }}</th>
+                                <td>
+                                    {{ field.errors }}
+                                    {{ field }}
+                                    {{ field.help_text }}
+                                </td>
+                            </tr>
+                        {% endfor %}
+
+                    </table>
+                    <input type="hidden" name="next" value="{% url 'limau:recipe_single' slug=recipe.slug %}">
+                    <button type="submit" name="submit" value="Post" id="id_submit" class="save btn btn-default">Submit</button> 
+
+
+                </form>
             {% endif %}
             </div>
         </div>

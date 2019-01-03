@@ -98,36 +98,72 @@
         </div>
     {% endfor %}
 </div>
-<div class="col-md-12 col-sm-12" style="margin-bottom:50px;">
-   {% comment %} 
-   {% load comments %} 
-    {% get_comment_count for article as comment_count %}
-    <p>{{ comment_count }} comments</p>
-    {% endcomment %}
-    {% render_comment_list for article %}
 
-    <div id="wrap_write_comment">
-        {% render_comment_form for article %}
-    </div> 
-    
-    {% if user.is_authenticated %}
-        {% get_comment_form for article as commentform %}
-        <form action="{% comment_form_target %}" method="post">
-            {% csrf_token %}
-            {% bootstrap_field commentform.comment %}
-            {{ commentform.honeypot }}
-            {{ commentform.content_type }}
-            {{ commentform.object_pk }}
-            {{ commentform.timestamp }}
-            {{ commentform.security_hash }}
-            <input type="hidden" name="next" value="{% url 'limau:article_single' slug=article.slug %}">
-            <button type="submit" name="submit" value="Post" id="id_submit" class="save btn btn-default">Submit</button> 
-            <button type="preview" name="preview" value="Preview" class="save btn btn-default">Preview</button>   
-        </form>
+<div class="row">
+    <div class="col-md-8 col-sm-12 col-xs-12" style="margin-bottom:50px;">
+        <div class="comments_wrapper" id="comments">
+            {% render_comment_list for article %}
 
-    {% else %}
-        <a href="{% url 'auth_login' %}" class="comment_login">Please login to comment</a>
-    {% endif %}
 
+
+            {% comment %}
+            <div id="wrap_write_comment">
+                {% render_comment_form for article %}
+            </div> 
+
+            {% endcomment%}
+                    
+            <div id="wrap_write_comment">
+                <div id="form-comment"> 
+                {% if user.is_authenticated %}
+                    {% get_comment_form for article as commentform %}
+                    <form action="{% comment_form_target %}" method="post">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            {% bootstrap_field commentform.comment %}
+                            {{ commentform.honeypot }}
+                            {{ commentform.content_type }}
+                            {{ commentform.object_pk }}
+                            {{ commentform.timestamp }}
+                            {{ commentform.security_hash }}
+                            {{ commentform.parent}}
+                            <input type="hidden" name="next" value="{% url 'limau:article_single' slug=article.slug %}">
+                            <button type="submit" name="submit" value="Post" id="id_submit" class="save btn btn-default">Submit</button> 
+                            <button type="preview" name="preview" value="Preview" class="save btn btn-default">Preview</button>
+                        </div>   
+                    </form>
+                
+                {% else %}
+                    <a href="{% url 'auth_login' %}" class="comment_login">Please login to comment</a>
+                    <p style="margin-top: 5px;">You can also post comments as guest below :)</p>
+                    {% get_comment_form for article as commentform %}
+
+                    <form action="{% comment_form_target %}" method ="post">
+                        {% csrf_token %}
+
+                            {% bootstrap_field commentform.comment %}
+                            {% bootstrap_field commentform.name %}
+                            {% bootstrap_field commentform.email %}
+                            {{ commentform.honeypot }}
+                            {{ commentform.content_type }}
+                            {{ commentform.object_pk }}
+                            {{ commentform.timestamp }}
+                            {{ commentform.security_hash }}
+                            {{ commentform.parent}}
+                        </table>
+
+                        <input type="hidden" name="next" value="{% url 'limau:article_single' slug=article.slug %}">
+                        <button type="submit" name="submit" value="Post" id="id_submit" class="save btn btn-default">Submit</button> 
+
+
+                    </form>
+                {% endif %}
+                </div>
+            </div>
+
+
+            <!-- testing custom made comment form -->          
+        </div>
+    </div>
 </div>
 {% endblock %}

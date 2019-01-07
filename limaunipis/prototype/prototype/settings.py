@@ -160,7 +160,8 @@ ACCOUNT_ACTIVATION_DAYS = 7
 REGISTRATION_AUTO_LOGIN = False
 # The page you want users to arrive at after they successfully log in
 LOGIN_REDIRECT_URL = '/home/'
-
+#Change the registration form to use unique email
+REGISTRATION_FORM = 'limau.forms.RegistrationCustomForm'
 
 # email settings
 EMAIL_USE_TLS = True

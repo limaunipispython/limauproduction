@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
 from limau.models import UserProfile, UserRecipe
+from registration.forms import RegistrationFormUniqueEmail
 
 class UserForm(forms.ModelForm):
     """Form definition for User."""
@@ -38,3 +39,6 @@ class UserRecipeForm(forms.ModelForm):
         help_texts = {
             "name_bm" : "If you want to submit generic recipe like 'NASI LEMAK' which other users might have posted, please add some text to your recipe name like 'NASI LEMAK CHEF HIDAYAH' to differentiate the recipe name in our database. its also required to avoid you submitting 2 recipes with the same name.",
         }
+
+class RegistrationCustomForm(RegistrationFormUniqueEmail):
+    pass

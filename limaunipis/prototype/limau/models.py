@@ -120,12 +120,13 @@ class Restaurant(models.Model):
     etiquette = models.IntegerField(choices=RATING_CHOICES, default=1)
     cleanliness = models.IntegerField(choices=RATING_CHOICES, default=1)
     access = models.IntegerField(choices=RATING_CHOICES, default=1)
+    price = models.IntegerField(choices=RATING_CHOICES, default=1)
     limau_meter = models.IntegerField(default=1)
     starhtml = models.TextField(default="nothing")
     slug = models.SlugField(default='will-be-generated-once-save')
 
     def calculate_meter(self):
-        average = float(self.food_quality*0.4+self.food_variety*0.2+self.etiquette*0.15+self.cleanliness*0.15+self.access*0.10)
+        average = float(self.food_quality*0.25+self.food_variety*0.15+self.etiquette*0.15+self.cleanliness*0.15+self.access*0.10+self.price*0.2)
         return int(round(average))
 
     def return_star(self, meter):

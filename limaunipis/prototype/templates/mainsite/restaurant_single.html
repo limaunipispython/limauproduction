@@ -29,14 +29,31 @@
             <img src="{{ restaurant.food_thumbnail_1.url }}" style="width:100%">
         </div>
     </div>
-    <div class="col-md-4 col-sm-4 col-xs-12">
+    <!-- <div class="col-md-4 col-sm-4 col-xs-12">
         <div class="criteria">
             <span>Food Quality     :  </span><span class="stars" data-rating="{{ restaurant.food_quality }}" data-num-stars="5" ></span></br>
             <span>Varieties             :  </span><span class="stars" data-rating="{{ restaurant.food_variety }}" data-num-stars="5" ></span></br>
             <span>Staff Etiquette :  </span><span class="stars" data-rating="{{ restaurant.etiquette }}" data-num-stars="5" ></span></br>
             <span>Cleanliness        :  </span><span class="stars" data-rating="{{ restaurant.cleanliness }}" data-num-stars="5" ></span></br>
             <span>Accessibility      :  </span><span class="stars" data-rating="{{ restaurant.access }}" data-num-stars="5" ></span></br>
+            <span>Price      :  </span><span class="stars" data-rating="{{ restaurant.price }}" data-num-stars="5" ></span></br>
         </div>
+    </div> -->
+    <div class="col-md-4 col-sm-6 col-xs-10">
+        <table class="table">
+            <tbody>
+                <td>Food Quality</td>
+                <td></span><span class="stars" data-rating="{{ restaurant.food_quality }}" data-num-stars="5" ></span></td>
+            </tbody>
+            <tbody>
+                <td>Price</td>
+                <td></span><span class="stars" data-rating="{{ restaurant.price }}" data-num-stars="5" ></span></td>
+            </tbody>
+            <tbody>
+                <td>Varieties</td>
+                <td></span><span class="stars" data-rating="{{ restaurant.food_variety }}" data-num-stars="5" ></span></td>
+            </tbody>
+        </table>
     </div>
 </div>
 
@@ -97,7 +114,6 @@
                             {{ commentform.parent}}
                             <input type="hidden" name="next" value="{% url 'limau:restaurant_single' slug=restaurant.slug %}">
                             <button type="submit" name="submit" value="Post" id="id_submit" class="save btn btn-default">Submit</button> 
-                            <button type="preview" name="preview" value="Preview" class="save btn btn-default">Preview</button>
                         </div>   
                     </form>
                 

@@ -19,14 +19,19 @@
 </div>
 
 <div class="row contentgroup">
-    <div class="col-md-4 col-sm-4 col-xs-6">
-        <div class="restaurant_pic">
-            <img src="{{ restaurant.building_thumbnail.url }}" style="width:100%">
+    <div class="col-md-4 col-sm-4 col-xs-12">
+        <div class="restaurant_pic" style="margin-bottom:10px;">
+            <img class="img img-rounded" src="{{ restaurant.building_thumbnail.url }}" style="width:100%">
         </div>
     </div>
     <div class="col-md-4 col-sm-4 col-xs-6">
         <div class="restaurant_pic">
-            <img src="{{ restaurant.food_thumbnail_1.url }}" style="width:100%">
+            <img class="img img-thumbnail" src="{{ restaurant.food_thumbnail_1.url }}" style="width:100%">
+        </div>
+    </div>
+    <div class="col-md-4 col-sm-4 col-xs-6">
+        <div class="restaurant_pic">
+            <img class="img img-thumbnail" src="{{ restaurant.food_thumbnail_2.url }}" style="width:100%">
         </div>
     </div>
     <!-- <div class="col-md-4 col-sm-4 col-xs-12">
@@ -39,29 +44,43 @@
             <span>Price      :  </span><span class="stars" data-rating="{{ restaurant.price }}" data-num-stars="5" ></span></br>
         </div>
     </div> -->
-    <div class="col-md-4 col-sm-6 col-xs-10">
+</div>
+<div class="row">
+    <div class="col-md-4 col-sm-6 col-xs-10" style="margin-top:10px">
         <table class="table">
             <tbody>
-                <td>Food Quality</td>
-                <td></span><span class="stars" data-rating="{{ restaurant.food_quality }}" data-num-stars="5" ></span></td>
-            </tbody>
-            <tbody>
-                <td>Price</td>
-                <td></span><span class="stars" data-rating="{{ restaurant.price }}" data-num-stars="5" ></span></td>
-            </tbody>
-            <tbody>
-                <td>Varieties</td>
-                <td></span><span class="stars" data-rating="{{ restaurant.food_variety }}" data-num-stars="5" ></span></td>
+                <tr>
+                    <td>Food Quality</td>
+                    <td></span><span class="stars" data-rating="{{ restaurant.food_quality }}" data-num-stars="5" ></span></td>
+                </tr>
+                <tr>       
+                    <td>Price</td>
+                    <td></span><span class="stars" data-rating="{{ restaurant.price }}" data-num-stars="5" ></span></td>
+                </tr>
+                <tr>
+                    <td>Varieties</td>
+                    <td></span><span class="stars" data-rating="{{ restaurant.food_variety }}" data-num-stars="5" ></span></td>
+                </tr>
+                <tr>
+                    <td>Cleanliness</td>
+                    <td><span class="stars" data-rating="{{ restaurant.cleanliness }}" data-num-stars="5" ></span></br></td>
+                </tr>
+                <tr>
+                    <td>Accessibility</td>
+                    <td><span class="stars" data-rating="{{ restaurant.access }}" data-num-stars="5" ></span></br></td>
+                </tr>
+                <tr>
+                    <td>Staff Etiquette</td>
+                    <td><span class="stars" data-rating="{{ restaurant.etiquette }}" data-num-stars="5" ></span></br></td>
+                </tr>
             </tbody>
         </table>
     </div>
-</div>
-
-<div class="row contentgroup">
-    <div class="col-md-8 col-sm-8 col-xs-12">
-            <p>{{ restaurant.description | safe }}</p>
+    <div class="col-md-8 col-sm-6 col-xs-12">
+            <p>{{ restaurant.description | safe | linebreaks }}</p>
     </div>
 </div>
+
 
 <div class="row contentgroup">
     <div class="col-md-12 col-sm-12 col-xs-12">

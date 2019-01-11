@@ -75,8 +75,8 @@ class Recipe(models.Model):
     thumbnail = ProcessedImageField(upload_to='recipe_thumbnail', processors=[ResizeToFill(640,360)], format="JPEG", options={'quality':70})
     thumbnail2 = ProcessedImageField(upload_to='recipe_thumbnail', processors=[ResizeToFill(640,360)], format="JPEG", options={'quality':70})
     thumbnail3 = ProcessedImageField(upload_to='recipe_thumbnail', processors=[ResizeToFill(640,360)], format="JPEG", options={'quality':70})
-    description = models.TextField(default="type a description of your recipe")
-    ingredient_content = models.TextField(default="type your ingredients here, in <li> form")
+    description = models.TextField(default="type a description of your recipe, use html tag if necessary")
+    ingredient_content = models.TextField(default="type your ingredients here, use html tag if necessary")
     ingredients = models.ManyToManyField(Ingredient)
     created_date = models.DateTimeField(default=timezone.now)
     slug = models.SlugField(default='will-be-generated-once-save')
@@ -153,8 +153,8 @@ class UserRecipe(models.Model):
     name_bm = models.CharField(max_length=128, unique=True)
     name_en = models.CharField(max_length=128, unique=True)
     description = models.TextField(max_length=300, default="my food is the best in the world!!") #this one should be a textfield 
-    ingredients = models.TextField(default="key in your ingredienst here in <li>ingredients</li> tag")
-    instructions = models.TextField(default="key in your instruction here in <li>ingredients<li> tag")
+    ingredients = models.TextField(default="key in your ingredients here in numbers form, eg, 1.Gula ")
+    instructions = models.TextField(default="key in your ingredients here in numbers form, eg 1.Masukkan Gula dan Garam")
     picture_1 = ProcessedImageField(upload_to='user_recipe_thumbnail', processors=[ResizeToFill(640,360)], format="JPEG", options={'quality':70})
     picture_2 = ProcessedImageField(upload_to='user_recipe_thumbnail', processors=[ResizeToFill(640,360)], format="JPEG", options={'quality':70})
     #need to add postdate field

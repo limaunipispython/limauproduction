@@ -24,12 +24,13 @@
         <h3 class="spectral-gold">{{ userlimau.username }}</h3>
         <p>{{ userlimau.userprofile.description }}</p>
     </div>
-    <div class="col-sm-12 col-xs-12 hidden-md hidden-lg">
+    <!-- <div class="col-sm-12 col-xs-12 hidden-md hidden-lg">
         <hr class="style17">
         <h4 class="kreon" style="text-align:center;">RECIPE SUBMISSION</h4>
-    </div>
+    </div> -->
     <div class="col-md-9 col-sm-12 col-xs-12">
-        <h4 class="kreon">RECIPE SUBMISSION</h4>
+        <h4 class="kreon hidden-xs">RECIPE SUBMISSION</h4>
+        <h4 class="kreon hidden-md hidden-lg" style="text-align:center;">RECIPE SUBMISSION</h4>
         {% for recipe in userlimau.userrecipe_set.all %}
         <div class="col-md-6 col-sm-12 col-xs-12">
             <div class="article_picture">

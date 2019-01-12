@@ -23,6 +23,9 @@
     <div class="col-sm-6 col-xs-6 hidden-md hidden-lg user_name" style="margin-bottom: 10px;">
         <h3 class="spectral-gold">{{ userlimau.username }}</h3>
         <p>{{ userlimau.userprofile.description }}</p>
+        {% if request.user == userlimau %}
+        <a class="btn btn-default" href="{% url 'limau:user_profile_form'  %}" ><span class="glyphicon glyphicon-pencil"> EDIT </span></a>
+        {% endif %}</br>
     </div>
     <!-- <div class="col-sm-12 col-xs-12 hidden-md hidden-lg">
         <hr class="style17">

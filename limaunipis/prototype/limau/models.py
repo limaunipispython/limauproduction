@@ -67,6 +67,19 @@ class Ingredient(models.Model):
     def __str__(self):
         return self.name_en
 
+#Recipe tag class for recipe
+class RecipeTag(models.Model):
+    name_bm = models.CharField(max_length=128)
+    name_en = models.CharField(max_length=128)
+    slug = models.SlugField(default='will-be-generated-once-save')
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.name_en)
+        super(RecipeTag, self).save(*args, **kwargs)
+
+    def __str__(self):
+        return self.name_en
+
 class Recipe(models.Model):
     recipecategory = models.ForeignKey(RecipeCategory)
     name_bm = models.CharField(max_length=128)
@@ -82,6 +95,7 @@ class Recipe(models.Model):
     slug = models.SlugField(default='will-be-generated-once-save')
     serve = models.IntegerField(choices=SERVING_NUMBER, default=3)
     instruction = models.TextField(default="fill in step by step instruction here")
+    tag = models.ManyToManyField(RecipeTag)
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name_en)#should be name_bm

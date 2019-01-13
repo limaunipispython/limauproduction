@@ -58,14 +58,17 @@
           <ul class="nav navbar-nav">
             <li><a href="#about">Contact Us</a></li>
 			<li><a href="{% url 'limau:all_users' %}">ALL CHEFS</a></li>
-            <li class="dropdown hidden-sm hidden-md hidden-lg">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Category<span class="caret"></span></a>
+            <!-- <li class="dropdown hidden-sm hidden-md hidden-lg">
+              <a href="{% url 'limau:recipe_all' %}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">RECIPE<span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><a href="#">Recipes</a></li>
                 <li><a href="#">Articles</a></li>
                 <li><a href="#">Restaurants</a></li>
 			  </ul>
-			</li>
+            </li> -->
+			<li><a href="{% url 'limau:recipe_all' %}">RECIPES</a></li>
+			<li><a href="{% url 'limau:article_all' %}">ARTICLES</a></li>
+			<li><a href="{% url 'limau:restaurant_all' %}">RESTAURANT REVIEWS</a></li>
 			<li class="hidden-sm hidden-md hidden-lg"><a href="{% url 'limau:user_recipe_post' %}">Post Your Recipe!</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">

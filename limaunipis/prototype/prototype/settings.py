@@ -166,8 +166,8 @@ REGISTRATION_FORM = 'limau.forms.RegistrationCustomForm'
 # email settings
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'arekay17@gmail.com'
-EMAIL_HOST_PASSWORD = 'wwg@5812'
+EMAIL_HOST_USER = 'limaunipis2016@gmail.com'
+EMAIL_HOST_PASSWORD = 'hariss2016'
 EMAIL_PORT = 587
 
 # comment setting

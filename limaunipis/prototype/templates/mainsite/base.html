@@ -66,10 +66,10 @@
                 <li><a href="#">Restaurants</a></li>
 			  </ul>
             </li> -->
-			<li><a href="{% url 'limau:recipe_all' %}">RECIPES</a></li>
-			<li><a href="{% url 'limau:article_all' %}">ARTICLES</a></li>
-			<li><a href="{% url 'limau:restaurant_all' %}">RESTAURANT REVIEWS</a></li>
-			<li class="hidden-sm hidden-md hidden-lg"><a href="{% url 'limau:user_recipe_post' %}">Post Your Recipe!</a></li>
+			<li class="hidden-md hidden-lg"><a href="{% url 'limau:recipe_all' %}">RECIPES</a></li>
+			<li class="hidden-md hidden-lg"><a href="{% url 'limau:article_all' %}">ARTICLES</a></li>
+			<li class="hidden-md hidden-lg"><a href="{% url 'limau:restaurant_all' %}">RESTAURANT REVIEWS</a></li>
+			<li class="hidden-md hidden-lg"><a href="{% url 'limau:user_recipe_post' %}">Post Your Recipe!</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
 						{% if user.is_authenticated %}

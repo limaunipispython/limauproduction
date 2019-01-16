@@ -6,6 +6,9 @@
 {% for item in content_list %}
     {% if item|get_class == 'Recipe' %}
     <div class="row contentgroup">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <h4 style="margin-top:0px;"><span class="label label-primary">Recipes</span></h4>
+        </div>
         <div class="col-md-6 col-sm-6 col-xs-12">
             <div class="article_picture">
                 <img class="img img-rounded" src="{{ item.thumbnail.url }}" style="width:100%">
@@ -25,6 +28,9 @@
     </div><hr class="style-two">
     {% elif item|get_class == 'Article' %}
     <div class="row contentgroup">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <h4 style="margin-top:0px;"><span class="label label-default">Articles</span></h4>
+        </div>
         <div class="col-md-6 col-sm-12 col-xs-12">
             <div class="article_picture">
                 <img class="img img-rounded" src="{{ item.thumbnail.url }}" style="width:100%">
@@ -41,6 +47,9 @@
     </div><hr class="style-two">
     {% elif item|get_class == 'Restaurant' %}
     <div class="row contentgroup">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <h4 style="margin-top:0px;"><span class="label label-warning">Restaurant Reviews</span></h4>
+        </div>
         <div class="col-md-12 col-sm-12 col-xs-12 restaurant_title">
             <h4><a href="{% url 'limau:restaurant_single' slug=item.slug %}">Limau Review : {{ item.name_bm }} </a></h4>
             <p>Post date : {{ item.created_date }}</p>

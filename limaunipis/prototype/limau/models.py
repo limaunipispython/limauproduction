@@ -137,6 +137,7 @@ class Restaurant(models.Model):
     price = models.IntegerField(choices=RATING_CHOICES, default=1)
     limau_meter = models.IntegerField(default=1)
     starhtml = models.TextField(default="nothing")
+    publish = models.BooleanField()
     slug = models.SlugField(default='will-be-generated-once-save')
 
     def calculate_meter(self):

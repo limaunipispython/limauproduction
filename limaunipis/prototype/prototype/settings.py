@@ -24,10 +24,10 @@ TEMPLATE_PATH = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = 'l7!@4t=(^t4r7+s4^1_xacgap1ruys05maajfiqir$nnzwev(j'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 # >> Added 127.0.0.1 for local testing environment
-ALLOWED_HOSTS = ['localhost','127.0.0.1','103.233.2.95', '.limaunipis.com']
+ALLOWED_HOSTS = ['localhost','127.0.0.1','103.233.2.95', '.limaunipis.com', 'limaunipis.com']
 
 
 # Application definition

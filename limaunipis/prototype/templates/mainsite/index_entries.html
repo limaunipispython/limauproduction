@@ -71,7 +71,7 @@
                         <span class="stars">{{ item.starhtml | safe }}</span>
                     </div>
                     <div class="restaurant_text">
-                        <content>{{ item.description | truncatechars:100 | safe }}</content></br>
+                        <!-- <content>{{ item.description | truncatechars:100 | safe }}</content></br> -->
                         <location class="address"> ADDRESS: {{ item.address }}</location></br>
                         <a href="{% url 'limau:restaurant_single' slug=item.slug %}" class="btn btn-success" role="button">Read More</a>
                     </div>

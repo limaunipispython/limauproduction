@@ -175,4 +175,4 @@ COMMENTS_APP = 'threadedcomments'
 
 SITE_ID = 1
 
-
+# test settings.py gitignore

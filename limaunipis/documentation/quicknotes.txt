@@ -12,3 +12,4 @@ pgAdmin4 Installation Directory: C:\Program Files\PostgreSQL\10\pgAdmin 4
 Stack Builder Installation Directory: C:\Program Files\PostgreSQL\10
 
 
+testing git ignore settings.py

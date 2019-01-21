@@ -124,15 +124,15 @@ class Restaurant(models.Model):
     name_bm = models.CharField(max_length=200)
     address = models.CharField(max_length=300)
     description = models.TextField()
-    building_thumbnail = ProcessedImageField(upload_to='restaurant_thumbnail/building', processors=[ResizeToFill(320,180)], format="JPEG", options={'quality':70})
-    menu_thumbnail = ProcessedImageField(upload_to='restaurant_thumbnail/menu', processors=[ResizeToFill(320,180)], format="JPEG", options={'quality':70})
-    food_thumbnail_1 = ProcessedImageField(upload_to='restaurant_thumbnail/food', processors=[ResizeToFill(320,180)], format="JPEG", options={'quality':70})
-    food_thumbnail_2 = ProcessedImageField(upload_to='restaurant_thumbnail/food', processors=[ResizeToFill(320,180)], format="JPEG", options={'quality':70})
+    building_thumbnail = ProcessedImageField(upload_to='restaurant_thumbnail/building', processors=[ResizeToFill(640,360)], format="JPEG", options={'quality':70})
+    menu_thumbnail = ProcessedImageField(upload_to='restaurant_thumbnail/menu', processors=[ResizeToFill(640,360)], format="JPEG", options={'quality':70})
+    food_thumbnail_1 = ProcessedImageField(upload_to='restaurant_thumbnail/food', processors=[ResizeToFill(640,360)], format="JPEG", options={'quality':70})
+    food_thumbnail_2 = ProcessedImageField(upload_to='restaurant_thumbnail/food', processors=[ResizeToFill(640,360)], format="JPEG", options={'quality':70})
     created_date = models.DateTimeField(default=timezone.now)
     food_quality = models.IntegerField(choices=RATING_CHOICES, default=1)
     food_variety = models.IntegerField(choices=RATING_CHOICES, default=1)
-    etiquette = models.IntegerField(choices=RATING_CHOICES, default=1)
-    cleanliness = models.IntegerField(choices=RATING_CHOICES, default=1)
+    service = models.IntegerField(choices=RATING_CHOICES, default=1)
+    facilities = models.IntegerField(choices=RATING_CHOICES, default=1)
     access = models.IntegerField(choices=RATING_CHOICES, default=1)
     price = models.IntegerField(choices=RATING_CHOICES, default=1)
     limau_meter = models.IntegerField(default=1)
@@ -141,7 +141,7 @@ class Restaurant(models.Model):
     slug = models.SlugField(default='will-be-generated-once-save')
 
     def calculate_meter(self):
-        average = float(self.food_quality*0.25+self.food_variety*0.15+self.etiquette*0.15+self.cleanliness*0.15+self.access*0.10+self.price*0.2)
+        average = float(self.food_quality*0.25+self.food_variety*0.15+self.service*0.15+self.facilities*0.15+self.access*0.10+self.price*0.2)
         return int(round(average))
 
     def return_star(self, meter):

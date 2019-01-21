@@ -58,35 +58,37 @@
     </div>
 </div> -->
 <div class="row">
-    <div class="col-md-4 col-sm-6 col-xs-10" style="margin-top:10px">
-        <table class="table">
-            <tbody>
-                <tr>
-                    <td>Food Quality</td>
-                    <td></span><span class="stars" data-rating="{{ restaurant.food_quality }}" data-num-stars="5" ></span></td>
-                </tr>
-                <tr>       
-                    <td>Price</td>
-                    <td></span><span class="stars" data-rating="{{ restaurant.price }}" data-num-stars="5" ></span></td>
-                </tr>
-                <tr>
-                    <td>Varieties</td>
-                    <td></span><span class="stars" data-rating="{{ restaurant.food_variety }}" data-num-stars="5" ></span></td>
-                </tr>
-                <tr>
-                    <td>Facilities</td>
-                    <td><span class="stars" data-rating="{{ restaurant.facilities }}" data-num-stars="5" ></span></br></td>
-                </tr>
-                <tr>
-                    <td>Accessibility</td>
-                    <td><span class="stars" data-rating="{{ restaurant.access }}" data-num-stars="5" ></span></br></td>
-                </tr>
-                <tr>
-                    <td>Service</td>
-                    <td><span class="stars" data-rating="{{ restaurant.service }}" data-num-stars="5" ></span></br></td>
-                </tr>
-            </tbody>
-        </table>
+    <div class="col-md-4 col-sm-6 col-xs-12" style="margin-top:10px">
+        <div class="panel panel-primary">
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <td>Food Quality</td>
+                        <td></span><span class="stars" data-rating="{{ restaurant.food_quality }}" data-num-stars="5" ></span></td>
+                    </tr>
+                    <tr>       
+                        <td>Price</td>
+                        <td></span><span class="stars" data-rating="{{ restaurant.price }}" data-num-stars="5" ></span></td>
+                    </tr>
+                    <tr>
+                        <td>Varieties</td>
+                        <td></span><span class="stars" data-rating="{{ restaurant.food_variety }}" data-num-stars="5" ></span></td>
+                    </tr>
+                    <tr>
+                        <td>Facilities</td>
+                        <td><span class="stars" data-rating="{{ restaurant.facilities }}" data-num-stars="5" ></span></br></td>
+                    </tr>
+                    <tr>
+                        <td>Accessibility</td>
+                        <td><span class="stars" data-rating="{{ restaurant.access }}" data-num-stars="5" ></span></br></td>
+                    </tr>
+                    <tr>
+                        <td>Service</td>
+                        <td><span class="stars" data-rating="{{ restaurant.service }}" data-num-stars="5" ></span></br></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
     <div class="col-md-8 col-sm-6 col-xs-12">
             <p>{{ restaurant.description | safe | linebreaks }}</p>
@@ -115,6 +117,7 @@
     </div>
 </div> -->
 
+<hr class="style17">
 <div class="row">
     <div class="col-md-8 col-sm-12 col-xs-12" style="margin-bottom:50px;">
         <div class="comments_wrapper" id="comments">

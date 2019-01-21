@@ -124,10 +124,10 @@ class Restaurant(models.Model):
     name_bm = models.CharField(max_length=200)
     address = models.CharField(max_length=300)
     description = models.TextField()
-    building_thumbnail = ProcessedImageField(upload_to='restaurant_thumbnail/building', processors=[ResizeToFill(960,720)], format="JPEG", options={'quality':90})
-    menu_thumbnail = ProcessedImageField(upload_to='restaurant_thumbnail/menu', processors=[ResizeToFill(960,720)], format="JPEG", options={'quality':90})
-    food_thumbnail_1 = ProcessedImageField(upload_to='restaurant_thumbnail/food', processors=[ResizeToFill(960,720)], format="JPEG", options={'quality':90})
-    food_thumbnail_2 = ProcessedImageField(upload_to='restaurant_thumbnail/food', processors=[ResizeToFill(960,720)], format="JPEG", options={'quality':90})
+    building_thumbnail = ProcessedImageField(upload_to='restaurant_thumbnail/building', processors=[ResizeToFill(1152,864)], format="JPEG", options={'quality':90})
+    menu_thumbnail = ProcessedImageField(upload_to='restaurant_thumbnail/menu', processors=[ResizeToFill(1152,864)], format="JPEG", options={'quality':90})
+    food_thumbnail_1 = ProcessedImageField(upload_to='restaurant_thumbnail/food', processors=[ResizeToFill(1152,864)], format="JPEG", options={'quality':90})
+    food_thumbnail_2 = ProcessedImageField(upload_to='restaurant_thumbnail/food', processors=[ResizeToFill(1152,864)], format="JPEG", options={'quality':90})
     created_date = models.DateTimeField(default=timezone.now)
     food_quality = models.IntegerField(choices=RATING_CHOICES, default=1)
     food_variety = models.IntegerField(choices=RATING_CHOICES, default=1)
@@ -141,7 +141,7 @@ class Restaurant(models.Model):
     slug = models.SlugField(default='will-be-generated-once-save')
 
     def calculate_meter(self):
-        average = float(self.food_quality*0.25+self.food_variety*0.15+self.service*0.15+self.facilities*0.15+self.access*0.10+self.price*0.2)
+        average = float(self.food_quality*0.2+self.food_variety*0.15+self.service*0.2+self.facilities*0.15+self.access*0.10+self.price*0.2)
         return int(round(average))
 
     def return_star(self, meter):

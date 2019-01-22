@@ -39,8 +39,10 @@
         </div>
     </div>
     <div class="col-sm-12 col-xs-12">
-        <p class="serving-time"> SAIZ HIDANGAN : {{ recipe.serve }} orang</p>
+        <div style="margin-top:5px; margin-bottom:5px;"><span class="label label-info">Saiz Hidangan : {{ recipe.serve }} orang </span></div>
+        <!-- <p class="serving-time"> SAIZ HIDANGAN : {{ recipe.serve }} orang</p> -->
     </div>
+    
     <!-- <div class="col-sm-4 col-xs-4">
         <div class="recipe_ingredient">
             <h4>Ingredients</h4>
@@ -55,7 +57,6 @@
             <p>{{ recipe.instruction | safe | linebreaks }}</p>
         </div>
     </div> -->
-
     <div class="col-sm-4 col-xs-4" style="padding-right:5px;">
         <div style="font-size:small;">
             <h2 style="font-size:medium;">Ingredients</h2>
@@ -70,6 +71,14 @@
                 <p>{{ recipe.instruction | safe | linebreaks }}</p>
             </div>
         </div>
+    </div>
+
+    <div class="col-sm-12 col-xs-12" style="margin-bottom:10px">
+        <img src="{{ recipe.thumbnail.url }}" class="img-thumbnail" alt="">
+    </div><br/>
+    
+    <div class="col-sm-12 col-xs-12">
+        <img src="{{ recipe.thumbnail2.url }}" class="img-thumbnail" alt="">
     </div>
 
 </div>
@@ -91,8 +100,9 @@
             <img src="{{ recipe.thumbnail3.url }}" class="img img-responsive recipe-image">
         </div>
     </div>
-    <div class="col-md-12">
-        <p class="serving-time"> SAIZ HIDANGAN : {{ recipe.serve }} orang</p>   
+    <div class="col-md-12 col-lg-12">
+        <div style="margin-top:5px; margin-bottom:5px;"><span class="label label-info">Saiz Hidangan : {{ recipe.serve }} orang </span></div>
+        <!-- <p class="serving-time"> SAIZ HIDANGAN : {{ recipe.serve }} orang</p> -->
     </div>
 </div>
 
